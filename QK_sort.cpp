@@ -10,7 +10,7 @@ using namespace std;
 	int p[N];
 int partition(int p[],int low ,int high)
 {
-	int x=rand()%(high-low)+low;
+	int x=rand()%(high-low+1)+low;
 	int pa=p[x];//选取主元
 	int left=low,right=high; 
 	while(left<right)
