@@ -6,7 +6,6 @@
 const int N=10050;
 const int INF=1<<9; 
 using namespace std;
-
 vector<int>p[N];
 	int head,tail;
 	int vex,arc;
@@ -35,14 +34,13 @@ void dijsktra()
 				{
 					k=j;min=path[j];
 				}
-			//	printf("%d ",k);
 			}
 			if(min==INF)
 				return;
 			visit[k]=true;//标记为最短路径 
 			for(vector<int>::iterator it=p[k].begin();it!=p[k].end();it++)
 			{
-				if(path[*it]>path[k]+1)// 非最短路径,start
+				if(path[*it]>path[k])// 非最短路径,start
 				{
 				 	path[*it]=path[k]+1;
 				}  
@@ -71,24 +69,12 @@ int  main()
 		p[tail].push_back(head);
 		p[head].push_back(tail);
 	 } 
-	 scanf("%d%d",&start,&end);
-	 init();
-	 /*for(int i=1;i<=vex;i++)
-	 {
-	 	for(vector<int>::iterator it=p[i].begin();it!=p[i].end();it++)
-	 		printf("%d:%d ",i,*it);
-	 		printf("\n");
-	 }*/
-	 dijsktra();
-	 /*for(int i=1;i<=end;i++)
-	 {
-	 	printf("%d ",path[i]);
-	  } */
-//	 printf("%d\n",path[end-1]);
-	if(path[end]==INF)
-		printf("0\n");
-	else
-		printf("%d\n",path[end]-1);
+	 
+	scanf("%d",&start);
+	init();
+	dijsktra();
+	for(int i=1;i<=vex;i++)
+		printf("%d ",path[i]);
 	 return 0;
 	 
  } 
